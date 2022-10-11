@@ -19,14 +19,13 @@ namespace TaskTracker.Logic.Implementations
             _context = context;
         }
 
-        public void CreateTask(int id, int projectId, string taskName, string taskDescritption, 
+        public void CreateTask( int projectId, string taskName, string taskDescritption, 
             DateTime startDate, DateTime finishDate, MyTaskStatus status, int priority)
         {
             var project = _context.Projects.FirstOrDefault(i => i.Id == projectId);
 
             var task = new MyTask
             {
-                Id = id,
                 ProjectId = projectId,
                 TaskName = taskName,
                 FinishDate = finishDate,
@@ -38,9 +37,9 @@ namespace TaskTracker.Logic.Implementations
 
             project.Tasks.Add(task);
 
-            _context.Tasks.AddAsync(task);
+            _context.Tasks.Add(task);
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void DeleteTask(int id)

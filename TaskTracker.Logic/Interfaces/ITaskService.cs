@@ -9,7 +9,7 @@ namespace TaskTracker.Logic.Interfaces
 {
     public interface ITaskService
     {
-        public void CreateTask(int id, int projectId, string taskName,
+        public void CreateTask(int projectId, string taskName,
             string taskDescritption, DateTime startDate, DateTime finishDate,
             MyTaskStatus status, int priority);
 

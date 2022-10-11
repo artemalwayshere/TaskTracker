@@ -4,7 +4,7 @@ using TaskTracker.Logic.Implementations;
 
 namespace TaskTracker.WebUI.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ProjectController : Controller
     {
         private readonly ProjectService _projectService;
@@ -22,7 +22,7 @@ namespace TaskTracker.WebUI.Controllers
             return Ok(projects);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
         public IActionResult GetProjectById(int id)
         {
             var project = _projectService.GetProjectById(id);
