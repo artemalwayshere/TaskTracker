@@ -66,13 +66,12 @@ namespace TaskTracker.Logic.Implementations
             return tasks;
         }
 
-        public void UpdateTask(int id, int projectId, string taskName, string taskDescritption, 
+        public void UpdateTask(int id, string taskName, string taskDescritption, 
             DateTime startDate, DateTime finishDate, MyTaskStatus status, int priority)
         {
             var task = GetTaskById(id);
 
             task.TaskName = taskName;
-            task.ProjectId = projectId;
             task.TaskDescription = taskDescritption;
             task.Status = status;
             task.StartDate = startDate;

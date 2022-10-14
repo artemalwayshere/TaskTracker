@@ -25,8 +25,24 @@ namespace TaskTracker.WebUI.Controllers
         public IActionResult CreateTask(int projectId, string taskName, string taskDescritption,
             DateTime startDate, DateTime finishDate, MyTaskStatus status, int priority)
         {
-            _taskService.CreateTask(projectId, taskName, taskDescritption, 
+            _taskService.CreateTask(projectId, taskName, taskDescritption,
                 startDate, finishDate, status, priority);
+            return Ok();
+        }
+
+        [HttpPut("UpdateItem")]
+        public IActionResult UpdateTask(int id, string taskName, string taskDescritption,
+            DateTime startDate, DateTime finishDate, MyTaskStatus status, int priority)
+        {
+            _taskService.UpdateTask(id, taskName, taskDescritption, startDate, finishDate,
+                status, priority);
+            return Ok();
+        }
+
+        [HttpPut("DeletebyId")]
+        public IActionResult DeleteTask(int id)
+        {
+            _taskService.DeleteTask(id);
             return Ok();
         }
     }

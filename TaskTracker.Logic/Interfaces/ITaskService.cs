@@ -15,7 +15,7 @@ namespace TaskTracker.Logic.Interfaces
 
         public void DeleteTask(int id);
 
-        public void UpdateTask(int id, int projectId, string taskName,
+        public void UpdateTask(int id, string taskName,
             string taskDescritption, DateTime startDate, DateTime finishDate,
             MyTaskStatus status, int priority);
 
