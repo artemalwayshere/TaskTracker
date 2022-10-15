@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskTracker.WebUI</name>
+    </assembly>
+    <members>
+        <member name="T:TaskTracker.WebUI.Controllers.MyTaskController">
+            <summary>
+            Controller to work task API
+            </summary>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.MyTaskController.GetTaskById(System.Int32)">
+            <summary>
+            Get task by id from any project
+            </summary>
+            <param name="id"></param>
+            <returns> Task</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.MyTaskController.CreateTask(System.Int32,System.String,System.String,System.DateTime,System.DateTime,TaskTracker.DAL.Model.MyTaskStatus,System.Int32)">
+            <summary>
+            Create task by project id
+            </summary>
+            <param name="projectId">Project id</param>
+            <param name="taskName">Task name</param>
+            <param name="taskDescritption">Task description</param>
+            <param name="startDate">Task start date</param>
+            <param name="finishDate">Task finish date</param>
+            <param name="status">Task status</param>
+            <param name="priority">Task priority</param>
+            <returns>No content</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.MyTaskController.UpdateTask(System.Int32,System.String,System.String,System.DateTime,System.DateTime,TaskTracker.DAL.Model.MyTaskStatus,System.Int32)">
+            <summary>
+            Update task by id
+            </summary>
+            <param name="id">Task id</param>
+            <param name="taskName">Task name</param>
+            <param name="taskDescritption">Task description</param>
+            <param name="startDate">Task start date</param>
+            <param name="finishDate">Task finish date</param>
+            <param name="status">Task status</param>
+            <param name="priority">Task priority</param>
+            <returns>No content</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.MyTaskController.DeleteTask(System.Int32)">
+            <summary>
+            Delete item by id
+            </summary>
+            <param name="id">ЕTaask id</param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskTracker.WebUI.Controllers.ProjectController">
+            <summary>
+            Controller to work project api.
+            </summary>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.GetAllProject">
+            <summary>
+            Action to get all projects.
+            </summary>
+            <returns>project list</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.GetProjectById(System.Int32)">
+            <summary>
+            Get project by id
+            </summary>
+            <param name="id">Project id</param>
+            <returns> Project by id</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.CreateProject(System.String,System.String,System.DateTime,System.DateTime,TaskTracker.DAL.Model.ProjectStatus,System.Int32)">
+            <summary>
+            Create project
+            </summary>
+            <param name="projectName">Project name</param>
+            <param name="projectDescription">Project description</param>
+            <param name="startDate">Project start date</param>
+            <param name="finishDate">Project finish date</param>
+            <param name="projectStatus">Project status</param>
+            <param name="priority">Project priority</param>
+            <returns>No conent</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.UpdateProject(System.String,System.String,System.DateTime,System.DateTime,TaskTracker.DAL.Model.ProjectStatus,System.Int32,System.Int32)">
+            <summary>
+            Update Project by id
+            </summary>
+            <param name="projectName">Project name</param>
+            <param name="projectDescription">Project description</param>
+            <param name="startDate">Project start date</param>
+            <param name="finishDate">Project finish date</param>
+            <param name="projectStatus">Project status</param>
+            <param name="priority">Project priority</param>
+            <param name="id">Poject id</param>
+            <returns>No contetnt</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.DeleteProject(System.Int32)">
+            <summary>
+            Delete project by id
+            </summary>
+            <param name="id">Project id</param>
+            <returns>No content</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.SortByFinishDate">
+            <summary>
+            Get sorted list of project by finish date
+            </summary>
+            <returns>Returns sorted list by finish date</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.SortByName">
+            <summary>
+            Get sorted list of project by name
+            </summary>
+            <returns>Returns sorted list by name</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.SortByPriority">
+            <summary>
+            Get sorted list of project by priority
+            </summary>
+            <returns>Returns sorted list by priority</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.SortByStartDate(System.Collections.Generic.IEnumerable{TaskTracker.DAL.Model.Project})">
+            <summary>
+            Get sorted list of project by start date
+            </summary>
+            <returns>Returns sorted list by start date</returns>
+        </member>
+        <member name="M:TaskTracker.WebUI.Controllers.ProjectController.SortByStatus(System.Collections.Generic.IEnumerable{TaskTracker.DAL.Model.Project})">
+            <summary>
+            Get sorted list of project by status
+            </summary>
+            <returns>Returns sorted list by status</returns>
+        </member>
+    </members>
+</doc>

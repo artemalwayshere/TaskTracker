@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>86966d41-3527-415a-8d8a-73d72693ddc4</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>C:\Users\Artem\source\repos\TaskTracker\TaskTracker.WebUI\TaskTracker.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
