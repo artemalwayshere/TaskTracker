@@ -39,7 +39,7 @@ namespace TaskTracker.WebUI.Controllers
             return Ok();
         }
 
-        [HttpPut("DeletebyId")]
+        [HttpDelete("DeletebyId")]
         public IActionResult DeleteTask(int id)
         {
             _taskService.DeleteTask(id);

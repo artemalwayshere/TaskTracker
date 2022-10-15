@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using TaskTracker.DAL;
 using TaskTracker.Logic.Implementations;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,10 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskTrackerAPI", Version = "v1"});
+});
 
 builder.Services.AddDbContext<TrackerDBContext>(
     i => i.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

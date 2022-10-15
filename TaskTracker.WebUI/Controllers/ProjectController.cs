@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskTracker.DAL.Model;
 using TaskTracker.Logic.Implementations;
+using TaskTracker.Logic.Interfaces;
 
 namespace TaskTracker.WebUI.Controllers
 {
@@ -8,12 +9,15 @@ namespace TaskTracker.WebUI.Controllers
     public class ProjectController : Controller
     {
         private readonly ProjectService _projectService;
+        private readonly ISortService _sortService;
 
 
-        public ProjectController(ProjectService projectService, MyTaskService myTaskService)
+        public ProjectController(ProjectService projectService, SortService sortService)
         {
             _projectService = projectService;
+            _sortService = sortService;
         }
+        #region CRUD Action
 
         [HttpGet]
         public IActionResult GetAllProject()
@@ -29,7 +33,7 @@ namespace TaskTracker.WebUI.Controllers
             return Ok(project);
         }
 
-        [HttpPost("{CreateProject}")]
+        [HttpPost("CreateProject")]
         public async Task<IActionResult> CreateProject(string projectName, string projectDescription,
             DateTime startDate, DateTime finishDate, ProjectStatus projectStatus, int priority)
         {
@@ -38,7 +42,7 @@ namespace TaskTracker.WebUI.Controllers
             return Ok();
         }
 
-        [HttpPut("{UpdateProject}")]
+        [HttpPut("UpdateProject")]
         public IActionResult UpdateProject(string projectName, string projectDescription,
             DateTime startDate, DateTime finishDate, ProjectStatus projectStatus, int priority, int id)
         {
@@ -47,11 +51,52 @@ namespace TaskTracker.WebUI.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IActionResult DeleteProject(int id)
         {
             _projectService.DeleteProject(id);
             return Ok();
         }
+        #endregion
+
+        #region SortAction
+
+        [HttpGet("SortByFinishDate")]
+        public IActionResult SortByFinishDate()
+        {
+            var pjs = _projectService.GetAllProjects();
+            return Ok();
+        }
+
+        [HttpGet("sortByName")]
+        public IActionResult SortByName()
+        {
+            var pjs = _projectService.GetAllProjects();
+            var result = _sortService.SortByName(pjs);
+            return Ok(result);
+        }
+
+
+        [HttpGet("SortByPriority")]
+        public IActionResult SortByPriority()
+        {
+            _sortService.SortByPriority(_projectService.GetAllProjects());
+            return Ok();
+        }
+
+        [HttpGet("SortByStartDate")]
+        public IActionResult SortByStartDate(IEnumerable<Project> spurceProjects)
+        {
+            _sortService.SortByStartDate(_projectService.GetAllProjects());
+            return Ok();
+        }
+
+        [HttpGet("SortByStatus")]
+        public IActionResult SortByStatus(IEnumerable<Project> spurceProjects)
+        {
+            _sortService.SortByStatus(_projectService.GetAllProjects());
+            return Ok();
+        }
+        #endregion
     }
 }
