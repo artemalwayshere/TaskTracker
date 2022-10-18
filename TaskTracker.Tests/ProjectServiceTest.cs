@@ -1,5 +1,6 @@
-using FizzWare.NBuilder;
+using Microsoft.EntityFrameworkCore;
 using Moq;
+using TaskTracker.DAL;
 using TaskTracker.DAL.Model;
 using TaskTracker.Logic;
 using TaskTracker.Logic.Implementations;
@@ -9,26 +10,21 @@ namespace TaskTracker.Tests
 {
     public class ProjectServiceTest
     {
-        private readonly ProjectService _productService;
-        private Mock<ProjectService> _mockProjectService= new Mock<ProjectService>();
-        IEnumerable<Project> _productsDbSetMock;
-        Project _productDbSetMock;
-
-        public ProductServiceTest()
-        {
-            _mockProjectService = new ProjectService(_mockProjectService.Object);
-            _productsDbSetMock = Builder<Project>.CreateListOfSize(5).Build().AsEnumerable();
-            _productDbSetMock = Builder<Project>.CreateNew().Build();
-        }
+        private const string _connectionString = "Server=localhost;User ID=postgres;Password=admin;Port=5432;Database=TaskTrackerDB;";
 
         [Fact]
-        public void GetAllProjectsTest()
+        public void GetProjectsTestById()
         {
             //Arrange
+            DbContextOptionsBuilder<TrackerDBContext> dbContextOptions = new DbContextOptionsBuilder<TrackerDBContext>().UseNpgsql(_connectionString);
+            TrackerDBContext context = new TrackerDBContext(dbContextOptions.Options);
+            ProjectService projectService = new ProjectService(context);
 
             //Act
+            Project project = projectService.GetProjectById(77);
 
             //Assert
+            Assert.NotNull(project);
         }
     }
 }

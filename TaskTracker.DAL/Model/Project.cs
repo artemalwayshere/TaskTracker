@@ -10,11 +10,6 @@ namespace TaskTracker.DAL.Model
     public enum ProjectStatus { NotStarted, Active, Completed }
     public  class Project
     {
-        public Project()
-        {
-            Tasks = new List<MyTask>();
-        }
-
         public int Id { get; set; }
         public string ProjectName { get; set; }
         public string ProjectDescription { get; set; }
